@@ -12,12 +12,16 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
+var trainName = "";
+var destination = "";
+var firstTrain = "";
+var frequency = 0;
 $("#submit").on('click', function (event) {
     event.preventDefault();
-    var trainName = $("#train-name").val().trim();
-    var destination = $("#destination").val().trim();
-    var firstTrain = $("#first-train-time").val().trim();
-    var frequency = $("#frequency").val().trim();
+    trainName = $("#train-name").val().trim();
+    destination = $("#destination").val().trim();
+    firstTrain = $("#first-train-time").val().trim();
+    frequency = $("#frequency").val().trim();
 
 
 
@@ -32,4 +36,13 @@ $("#submit").on('click', function (event) {
     $("tbody").append(addTrain);
     console.log(addTrain);
   database.ref().push(addTrain);
-});
+})
+database.ref().on("child_added", function(snapshot){
+    var sv = snapshot.val();
+
+    console.log(sv);
+    console.log(sv.trainName);
+    console.log(sv.destination);
+    console.log(sv.firstTrain);
+    console.log(sv.frequency);
+  })
