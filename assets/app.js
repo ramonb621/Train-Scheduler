@@ -19,12 +19,17 @@ $("#submit").on('click', function (event) {
     var firstTrain = $("#first-train-time").val().trim();
     var frequency = $("#frequency").val().trim();
 
-    var addTrain = {
-        "Train Name": trainName,
-        "Destination": destination,
-        "First Train Time": firstTrain,
-        "Frequency": frequency,
-    }
+
+
+    var addTrain = $("<tr>").append(
+        $("<td>").text(trainName),
+        $("<td>").text(destination),
+        $("<td>").text(firstTrain),
+        $("<td>").text(frequency),
+        $("<td>").text(),
+        $("<td>").text(),
+    );
+    $("tbody").append(addTrain);
     console.log(addTrain);
   database.ref().push(addTrain);
 });
