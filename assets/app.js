@@ -16,6 +16,12 @@ var trainName = "";
 var destination = "";
 var firstTrain = "";
 var frequency = 0;
+
+var diffTime = moment().diff(moment(firstTrain), "minutes");
+var timeApart = diffTime % frequency;
+var minutesNextTrain = frequency - timeApart;
+var nextTrain = moment().add(minutesNextTrain, "minutes");
+
 $("#submit").on('click', function (event) {
     event.preventDefault();
     trainName = $("#train-name").val().trim();
@@ -24,15 +30,14 @@ $("#submit").on('click', function (event) {
     frequency = $("#frequency").val().trim();
 
 
-
     var addTrain = $("<tr>").append(
         $("<td>").text(trainName),
         $("<td>").text(destination),
-        $("<td>").text(firstTrain),
         $("<td>").text(frequency),
-        $("<td>").text(),
-        $("<td>").text(),
+        $("<td>").text(nextTrain),
+        $("<td>").text(minutesNextTrain),
     );
+    
     $("tbody").append(addTrain);
     console.log(addTrain);
   database.ref().push(addTrain);
