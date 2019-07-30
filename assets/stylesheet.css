@@ -1,0 +1,21 @@
+/* font-family: 'Glegoo', serif;
+font-family: 'Press Start 2P', cursive;
+font-family: 'Saira Semi Condensed', sans-serif; */
+/* Color Theme Swatches in Hex */
+/* .My-Color-Theme-1-hex { color: #292828; }
+.My-Color-Theme-2-hex { color: #333231; }
+.My-Color-Theme-3-hex { color: #757472; }
+.My-Color-Theme-4-hex { color: #82807E; }
+.My-Color-Theme-5-hex { color: #050505; } */
+body{
+    background-image: url("steve-harvey-_DwOF5XK_W0-unsplash.jpg");
+    height: 100%;
+    margin:0;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.jumbotron, table, form{
+    margin: auto;
+    font-family: 'Saira Semi Condensed', sans-serif;
+    font-weight: bold;
+}
