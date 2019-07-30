@@ -17,5 +17,19 @@ body{
 .jumbotron, table, form{
     margin: auto;
     font-family: 'Saira Semi Condensed', sans-serif;
+    /* font-weight: bold; */
+}
+tbody{
+    background-color: #292828;
+    color:gold;
+}
+form{
+    color:whitesmoke;
+    background-color: #292828;
+}
+label{
+    color:gold;
+}
+.jumbotron{
     font-weight: bold;
 }
