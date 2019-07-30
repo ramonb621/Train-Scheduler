@@ -8,11 +8,12 @@ var config= {
     appId: "1:411933911731:web:78ab750d4b7e18f5"
   };
 
+// INITIALIZES FIREBASE
 firebase.initializeApp(config);
 
 var database = firebase.database();
 
-
+//BUTTON EVENT LISTENER
 $("#submit").on('click', function (event) {
     event.preventDefault();
 
@@ -30,14 +31,14 @@ $("#submit").on('click', function (event) {
     }
  
   database.ref().push(addTrain);
-
+// CLEARS INPUT INFO AFTER ADDTRAIN OBJECT BEING PUSHED TO FIREBASE
   $("#train-name").val("");
   $("#destination").val("");
   $("#first-train-time").val("");
   $("#frequency").val("");
 
-  // return;
 })
+//RETURNS INFO FROM FIREBASE TO TBODY
 database.ref().on("child_added", function(childSnapshot){
     var sv = childSnapshot.val();
 
@@ -45,12 +46,6 @@ database.ref().on("child_added", function(childSnapshot){
     var trainDestination = sv.destination;
     var first = sv.firstTrain;
     var freq = sv.frequency;
-
-    console.log(sv);
-    console.log(sv.trainName);
-    console.log(sv.destination);
-    console.log(sv.firstTrain);
-    console.log(sv.frequency);
 
     let remainder = moment().diff(moment.unix(first), "minutes") % freq;
     let minutes = freq - remainder;
